@@ -1,0 +1,49 @@
+*{
+    font-family: "Jodefin Sans", serif;
+}
+
+.hamburger img
+ {
+    width: 1.4rem;
+    cursor: pointer;
+    animation: none;
+}
+
+.sideBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10000000000;
+}
+
+.sbr{
+    background: #FEE440;   
+    padding-inline: 1rem;
+    border-radius: 0.5rem;
+    border: 0.1rem #000 solid;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.link, .logoutButton{
+    width: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 0.4rem;
+    height: 2rem;
+    font-size: 0.8rem !important;
+    border-radius: 0.4rem;
+    padding-inline: 0.3rem;
+    overflow: hidden;
+}
+
+.link img, .logoutButton svg, .link svg{
+    width: 1rem;
+}
+
+.link:hover, .logoutButton:hover{
+    background: #e5ff00;
+}

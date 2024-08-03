@@ -1,0 +1,84 @@
+:root {
+    --amethyst: #9b5de5ff;
+    --brilliant-rose: #f15bb5ff;
+    --maize: #fee440ff;
+    --deep-sky-blue: #00bbf9ff;
+    --aquamarine: #00f5d4ff;
+}
+
+.leaderboardContainer {
+    width: 75%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    padding: 20px;
+    border: 1px solid var(--amethyst);
+    border-radius: 8px;
+    background-color: var(--maize);
+}
+
+.leaderboardTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--amethyst);
+}
+
+.leaderboardTable {
+    border-collapse: collapse;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.leaderboardTable>thead>tr {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.leaderboardTable>thead>tr:hover {
+    background: var(--deep-sky-blue);
+}
+
+.leaderboardTable>thead>tr>th {
+    display: flex;
+}
+
+.leaderboardTable>thead {
+    display: flex;
+    background: var(--deep-sky-blue) ;
+}
+
+
+
+.leaderboardTable th,
+.leaderboardTable td {
+    padding: 12px;
+    text-align: left;
+}
+
+.leaderboardTable th {
+    background-color: var(--deep-sky-blue);
+    color: var(--aquamarine);
+}
+
+.leaderboardTable tr:nth-child(even) {
+    background-color: var(--maize);
+}
+.leaderboardTable tr {
+    width: 100%;
+}
+
+.leaderboardTable tr:hover {
+    background-color: var(--brilliant-rose);
+    color: var(--aquamarine);
+}
+
+.leaderboardTable tr{
+    min-width: 100%;
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--amethyst);
+
+}

@@ -1,0 +1,47 @@
+:root {
+    --amethyst: #9b5de5ff;
+    --brilliant-rose: #f15bb5ff;
+    --maize: #fee440ff;
+    --deep-sky-blue: #00bbf9ff;
+    --aquamarine: #00f5d4ff;
+  }
+  
+  .profileContainer {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid var(--amethyst);
+    border-radius: 8px;
+    background-color: var(--maize);
+    width: 90%;
+  }
+  
+  .profileTitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: var(--amethyst);
+  }
+  
+  .statItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--amethyst);
+  }
+  
+  .statItem:last-child {
+    border-bottom: none;
+  }
+  
+  .statLabel {
+    font-weight: bold;
+    color: var(--deep-sky-blue);
+    font-family: "Josefin sans", serif;
+  }
+  
+  .statValue {
+    color: var(--brilliant-rose);
+    font-family: "Josefin sans", serif;
+  }
+  
+  

@@ -1,0 +1,378 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body > div{
+    width: 100%;
+}
+.input {
+    -webkit-appearance: none;
+    /* Remove default styles */
+    appearance: none;
+    background: #F15BB5;
+    /* Track color */
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20rem;
+}
+
+/* Style the track for WebKit browsers */
+.input::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    background: #F15BB5;
+    /* Track color */
+    border-radius: 5px;
+}
+
+/* Style the thumb for WebKit browsers */
+.input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ed61b5;
+    /* Thumb color */
+    cursor: pointer;
+    border-radius: 50%;
+    position: relative;
+    bottom: 50%;
+    z-index: 1;
+}
+
+/* Style the track for Firefox */
+.input::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    background: #F15BB5;
+    /* Track color */
+    border-radius: 5px;
+}
+
+/* Style the thumb for Firefox */
+.input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #F15BB5;
+    /* Thumb color */
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* Style the track for other browsers (IE/Edge) */
+.input::-ms-track {
+    width: 100%;
+    height: 8px;
+    background: transparent;
+    /* Required for IE */
+    border-color: transparent;
+    color: transparent;
+}
+
+/* Style the fill for IE */
+.input::-ms-fill-lower {
+    background: #F15BB5;
+    /* Track color */
+    border-radius: 5px;
+}
+
+.input::-ms-fill-upper {
+    background: #F15BB5;
+    /* Track color */
+    border-radius: 5px;
+}
+
+/* Style the thumb for IE */
+.input::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #F15BB5;
+    /* Thumb color */
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* styling the parent div for proper positioning */
+.noOfQuestions {
+    display: flex;
+    flex-direction: row;
+    min-width: 20rem;
+    align-items: center;
+    justify-content: center;
+}
+
+/* making the most out of form */
+
+.form {
+    display: flex;
+    flex-direction: row;
+    background: #9B5DE5;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+button {
+    display: flex;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+/* designing the label */
+.label {
+    color: #fff;
+    padding-block: 3rem;
+    font-family: "Josefin Sans", serif;
+    font-size: 3rem;
+    padding-inline: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: left
+}
+
+/* modifying amountValue: */
+
+.amountValue {
+    display: flex;
+    font-family: "Josefin Sans", serif;
+    color: #9B5DE5;
+    font-size: 3rem;
+    padding: 1rem;
+    background: #d3a8ff;
+    border-radius: 1rem;
+    align-self: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    max-width: 5rem;
+    min-width: 5rem;
+}
+
+.category {
+    background: #00F5D4;
+    display: grid;
+    place-items: center;
+    place-content: center;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+    padding-block: 3rem;
+    padding-inline-end: 3rem;
+}
+
+.gridItem {
+    aspect-ratio: 1;
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    background: #9B5DE5;
+    position: relative;
+    transition: 0.2s scale ease, 0.3s ease transform;
+    font-family: "Josefin Sans", serif;
+}
+
+.span {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.gridItem:nth-of-type(1) {
+    background: #FEE440;
+}
+
+.gridItem:nth-of-type(2) {
+    background: #00BBF9;
+}
+
+.gridItem:nth-of-type(3) {
+    background: #F15BB5;
+}
+
+
+.gridItem img {
+    display: flex;
+    position: absolute;
+    max-height: 4rem;
+    bottom: 1rem;
+    right: 1rem;
+}
+
+.gridItem:hover {
+    scale: 1.05;
+    transform: translateY(0.5rem);
+    filter: contrast(0.9);
+}
+
+.span {
+    z-index: 1;
+    display: flex;
+    padding-block-start: 1rem;
+}
+
+.difficulty {
+    display: grid;
+    place-items: center;
+    place-content: center;
+    background: #FEE440;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.gridItem2 {
+    display: flex;
+    font-family: "Josefin Sans", serif;
+
+}
+
+.gridItem2 {
+    display: flex;
+    aspect-ratio: 2;
+    position: relative;
+    border: 0.1rem solid #000;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 1rem;
+
+}
+
+.gridItem2 img {
+    max-height: 3rem;
+    right: 1rem;
+}
+
+.gridItem2:nth-of-type(1):hover {
+    background: #ceffda;
+    cursor: pointer;
+}
+
+.gridItem2:nth-of-type(2):hover {
+    background: #fff2ce;
+    cursor: pointer;
+}
+
+.gridItem2:nth-of-type(3):hover {
+    background: #ffcece;
+    cursor: pointer;
+}
+
+.green {
+    background: #ceffda;
+}
+
+.yellow {
+    background: #fff2ce;
+}
+
+.red {
+    background: #ffcece;
+}
+
+img {
+    animation: 5s infinite hover linear;
+}
+
+@keyframes hover {
+    0% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(0.2rem);
+    }
+
+    50% {
+        transform: translateY(0);
+    }
+
+    75% {
+        transform: translateY(-0.2rem);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+.subCategories {
+    background: #F15BB5;
+}
+
+.grid3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding-inline: 3rem;
+    padding-bottom: 3rem;
+}
+
+.gridItem3 {
+    display: flex;
+    /* aspect-ratio: 2; */
+    border: 0.1rem solid black;
+    border-radius: 1rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: "Josefin Sans", serif;
+    transition: 0.2s ease;
+}
+
+.gridItem3:hover, .active {
+    background: #000;
+    color: #F15BB5;
+}
+
+.button{
+    background: #FEE440;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1rem;}
+
+.buttonLink{
+    background: #9B5DE5;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    color: #FEE440;
+    font-family: "Josefin Sans", serif;
+    outline: none;
+    border:2px solif #00000000;
+    transition: 0.2s all ease;
+}
+
+.buttonLink:active{
+    color: #fff;
+    background: #6e2fbb;
+}
+
+.buttonLink:focus{
+    border:2px solif #000
+}
+
+.buttonLink:hover{
+    scale: 0.96;
+}
