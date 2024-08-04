@@ -19,7 +19,7 @@ const collectionName = process.env.COLLECTION_NAME;
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://quiz-app-chi-lilac.vercel.app/",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type",
     credentials: true, // Allow credentials (cookies) to be sent
