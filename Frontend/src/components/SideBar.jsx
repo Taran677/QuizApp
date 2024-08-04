@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import css from "./SideBar.module.css";
-import axios from "axios"; // Make sure to import axios if you need to handle logout with an API call
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default function SideBar({
@@ -17,7 +17,9 @@ export default function SideBar({
       await axios.post(
         "https://quizapp-68lr.onrender.com/api/auth/logout",
         {},
-        { withCredentials: true }
+        {
+          withCredentials: true, // This ensures cookies (including authToken) are sent with the request
+        }
       );
       if (onLogout) {
         onLogout();
