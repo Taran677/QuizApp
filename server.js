@@ -18,12 +18,13 @@ const collectionName = process.env.COLLECTION_NAME;
 
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://quiz-app-1z1f.vercel.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: 'https://quiz-app-1z1f.vercel.app', 
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  credentials: true, 
 };
 
+// Apply CORS middleware
 app.use(cors(corsOptions));
 
 app.use(cookieParser());
@@ -99,6 +100,7 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
       httpOnly: true,
       secure: true, 
       maxAge: 24 * 60 * 60 * 1000, 
+      sameSite: 'None',
     });
 
     res
@@ -128,6 +130,7 @@ const verifyToken = (req, res, next) => {
     next();
   });
 };
+
 
 app.get("/api/protected-route", verifyToken, (req, res) => {
   res.json({ message: "This is a protected route", username: req.username });
