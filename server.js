@@ -22,9 +22,10 @@ app.use(
     origin: "https://quiz-app-1z1f.vercel.app",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type",
-    credentials: true, // Allow credentials (cookies) to be sent
+    credentials: true, // Ensure credentials (cookies) are allowed
   })
 );
+
 app.use(cookieParser());
 
 const connectToDB = async (req, res, next) => {
@@ -92,13 +93,14 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
     const secretKey = process.env.JWT_SECRET;
     const options = { expiresIn: "1d" };
 
-    const token = jwt.sign(payload, secretKey, options);
+    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production", // Ensure this matches the environment
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
     });
+
     res
       .status(200)
       .json({ message: "Login successful", username: user.username });
@@ -111,6 +113,7 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.authToken;
+  console.log("Token received:", token); // Debugging line
 
   if (!token) {
     return res.status(403).json({ message: "No token provided" });
@@ -118,7 +121,8 @@ const verifyToken = (req, res, next) => {
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
-      return res.status(500).json({ message: "Failed to authenticate token" });
+      console.error("Token verification error:", err); // Debugging line
+      return res.status(403).json({ message: "Failed to authenticate token" });
     }
     req.username = decoded.username;
     next();
