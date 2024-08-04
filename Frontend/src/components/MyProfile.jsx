@@ -1,26 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styles from './Profile.module.css';
-import Loading from "./Loading.jsx"
+import Loading from "./Loading.jsx";
+
 const Profile = () => {
   const [userStats, setUserStats] = useState(null);
 
   useEffect(() => {
     const fetchUserStats = async () => {
       try {
-        const response = await fetch('https://quizapp-68lr.onrender.com/api/user/stats', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', // To include cookies
-        });
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        setUserStats(data);
+        // Assuming token might be in cookies
+        const token = document.cookie
+          .split('; ')
+          .find(row => row.startsWith('authToken='))
+          ?.split('=')[1];
+        console.log('Token:', token);
+
+        const response = await axios.get(
+          'https://quizapp-68lr.onrender.com/api/user/stats',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`, // Assuming the token should be in Bearer format
+            },
+            withCredentials: true,
+          }
+        );
+
+        setUserStats(response.data);
       } catch (error) {
         console.error('Error fetching user stats:', error);
       }
@@ -30,7 +37,7 @@ const Profile = () => {
   }, []);
 
   if (!userStats) {
-    return <Loading></Loading>
+    return <Loading />;
   }
 
   return (

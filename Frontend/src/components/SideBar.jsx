@@ -23,7 +23,7 @@ export default function SideBar({
         onLogout();
       }
 
-      window.location.href = "/login";
+      window.location.href = "https://quiz-app-1z1f.vercel.app/login";
     } catch (error) {
       console.error("Logout failed:", error);
       setError(`${error}`);
