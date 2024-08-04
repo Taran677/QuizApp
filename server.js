@@ -22,7 +22,7 @@ app.use(
     origin: "https://quiz-app-1z1f.vercel.app",
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type",
-    credentials: true, // Ensure credentials (cookies) are allowed
+    credentials: true, 
   })
 );
 
@@ -97,8 +97,8 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // Ensure this matches the environment
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
+      secure: true, 
+      maxAge: 24 * 60 * 60 * 1000, 
     });
 
     res
@@ -113,7 +113,7 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.authToken;
-  console.log("Token received:", token); // Debugging line
+  console.log("Token received:", token); 
 
   if (!token) {
     return res.status(403).json({ message: "No token provided" });

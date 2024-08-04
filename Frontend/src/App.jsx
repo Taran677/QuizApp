@@ -31,10 +31,23 @@ function App() {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
+        // Log the token from cookies or localStorage if needed
+        const token = document.cookie // Assuming token might be in cookies
+          .split('; ')
+          .find(row => row.startsWith('authToken='))
+          ?.split('=')[1];
+        console.log('Token:', token);
+
         const response = await axios.get(
           "https://quizapp-68lr.onrender.com/api/protected-route",
-          { withCredentials: true }
+          {
+            withCredentials: true,
+            headers: {
+              'Authorization': `Bearer ${token}` 
+            }
+          }
         );
+
         console.log("API response:", response);
         setUsername(response.data.username);
       } catch (error) {
@@ -45,7 +58,6 @@ function App() {
 
     fetchUsername();
   }, []);
-
   const onLogout = async () => {
     try {
       await axios.post(
