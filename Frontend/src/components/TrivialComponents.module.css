@@ -23,7 +23,7 @@ body {
     height: 100vh;
 }
 
-img {
+.grid img {
     max-height: 15rem;
     ;
 }
@@ -56,4 +56,10 @@ h1 {
 
 .btn:nth-of-type(2){
     background: #FEE440;
+}
+
+@media screen and (max-width:576px) {
+    html{
+        font-size: 80%;
+    }
 }

@@ -15,7 +15,7 @@ export default function SubCategories({ solution, category,  setSelectedCat}) {
       // Add 'active' class to the clicked element
       e.target.classList.add(css.active);
       setSelectedCat(e.target.textContent)
-      window.location.href = `http://localhost:5173/get-started#modes`
+      window.location.href = `http://localhost:3000/get-started#modes`
     } catch (error) {
       console.error("Error handling click:", error);
     }
@@ -24,7 +24,7 @@ export default function SubCategories({ solution, category,  setSelectedCat}) {
 
   return (
     <div className={css.subCategories} id="subcategories">
-      <h1 className={css.label}>Choose a Subcategory</h1>
+      <h2 className={css.label}>Choose a Subcategory</h2>
       <div className={css.grid3}>
         {solution.map((subcategory, index) => (
           <div key={index} className={css.gridItem3} onClick={handleClick}>

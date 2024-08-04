@@ -33,6 +33,11 @@
     border-bottom: none;
   }
   
+.statItem:nth-of-type(1)>.statValue{
+  padding-right: 1rem;
+  overflow: hidden;
+}
+
   .statLabel {
     font-weight: bold;
     color: var(--deep-sky-blue);

@@ -93,3 +93,9 @@
 .error {
   color: rgb(156, 17, 17);
 }
+
+@media screen and (max-width:576px) {
+  .loginContainer{
+    margin-inline: 3rem;
+  }
+}

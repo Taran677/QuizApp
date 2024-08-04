@@ -11,6 +11,10 @@ body {
     min-height: 100vh;
 }
 
+.img img {
+    max-width: 25rem;
+}
+
 .main {
     background: #FEE440;
     flex-direction: column;
@@ -30,7 +34,8 @@ body {
     font-family: "Josefin Sans", serif
 }
 
-.score, .questionNo {
+.score,
+.questionNo {
     background: #00F5D4;
     position: absolute;
     top: -1.5rem;
@@ -40,7 +45,7 @@ body {
     border: 0.1rem #000 solid;
 }
 
-.questionNo{
+.questionNo {
     left: 40%
 }
 
@@ -199,13 +204,67 @@ body {
     font-size: 1rem;
 }
 
-.btn{
+.btn {
     display: flex;
     position: absolute;
     bottom: 1rem;
 }
 
-.btn{
+.btn {
     color: #fff !important;
     text-decoration: none !important;
+}
+
+@media screen and (max-width:576px) {
+    .main {
+        max-width: 90vw;
+    }
+
+    .main h1 {
+        font-size: 3rem;
+    }
+
+    .main button {
+        font-size: 0.75rem;
+    }
+
+    .results {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .option {
+        padding: 0.6rem;
+        padding-block: 0.6rem !important;
+    }
+    .grid{
+        max-width: 80vw;
+        grid-template-rows: 3fr 1fr 1fr 1fr 1fr;
+
+    }
+    .score, .questionNo{
+        font-size: 0.7rem;
+    }
+    .score{
+        left: 1rem;
+    }
+    .questionNo{
+        left: 65%;
+    }
+    .img  img{
+        width: 60vw;
+    }
+    .results{
+        max-width: 90vw;
+    }
+
+
+    .details div {
+        font-size: 1rem;
+        width: 80vw;
+    }
+    .details h2{
+        font-weight: 400 !important;
+
+    }
 }

@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 100vh !important;
 }
 
 a {
@@ -13,4 +14,15 @@ a {
 
 *{
     scroll-behavior: smooth !important;
+}
+
+@media screen and (max-width: 576px) {
+    h1{
+        font-size: 2rem !important;
+    }
+    tr{
+        max-width: 70vw !important;
+        font-size: 1rem;
+        display: flex;
+    }
 }

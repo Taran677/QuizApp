@@ -1,9 +1,8 @@
-*{
+* {
     font-family: "Jodefin Sans", serif;
 }
 
-.hamburger img
- {
+.hamburger img {
     width: 1.4rem;
     cursor: pointer;
     animation: none;
@@ -17,8 +16,8 @@
     z-index: 10000000000;
 }
 
-.sbr{
-    background: #FEE440;   
+.sbr {
+    background: #FEE440;
     padding-inline: 1rem;
     border-radius: 0.5rem;
     border: 0.1rem #000 solid;
@@ -26,24 +25,45 @@
     border-bottom-left-radius: 0;
 }
 
-.link, .logoutButton{
-    width: 6rem;
+.link,
+.logoutButton {
+    width: 15rem;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-block: 0.4rem;
     height: 2rem;
-    font-size: 0.8rem !important;
+    font-size: 1.2rem !important;
     border-radius: 0.4rem;
     padding-inline: 0.3rem;
     overflow: hidden;
 }
 
-.link img, .logoutButton svg, .link svg{
-    width: 1rem;
+.link img,
+.logoutButton svg,
+.link svg {
+    width: 1.2rem;
 }
 
-.link:hover, .logoutButton:hover{
+.link:hover,
+.logoutButton:hover {
     background: #e5ff00;
+}
+
+@media screen and (max-width: 576px) {
+
+    .link,
+    .logoutButton {
+        font-size: 1.3rem !important;
+        width: 20rem;
+        margin-block: 1rem;
+    }
+
+    .link img,
+    .logoutButton svg,
+    .link svg {
+        width: 1.3rem;
+
+    }
 }
