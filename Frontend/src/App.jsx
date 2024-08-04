@@ -35,6 +35,7 @@ function App() {
           "https://quizapp-68lr.onrender.com/api/protected-route",
           { withCredentials: true }
         );
+        console.log("API response:", response);
         setUsername(response.data.username);
       } catch (error) {
         console.error("Error fetching username:", error);
