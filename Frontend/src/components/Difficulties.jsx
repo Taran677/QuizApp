@@ -15,7 +15,7 @@ export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
           onClick={() => {
             setActive("green");
             setDifficulty("easy");
-            window.location.href = `https://quizapp-68lr.onrender.com/get-started#nooqs`
+            window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#nooqs`
           }}
         >
           <span className={css.span2}>Easy</span>
@@ -41,7 +41,7 @@ export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
           onClick={() => {
             setActive("red");
             setDifficulty("hard");
-            window.location.href = `https://quizapp-68lr.onrender.com/get-started#nooqs`
+            window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#nooqs`
           }}
         >
           <span className={css.span2}>Hard</span>
