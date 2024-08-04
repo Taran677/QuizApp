@@ -46,7 +46,7 @@ export default function SideBar({
             </span>
           </Link>
           <button onClick={handleLogout} className={css.logoutButton}>
-            <span>Logout</span>{" "}
+            <span>Logout</span>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
