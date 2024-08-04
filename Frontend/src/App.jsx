@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import TrivialComponent from "./components/TrivialComponent";
 import UrlGeneratorAPI from "./components/UrlGeneratorAPI";
@@ -45,14 +45,10 @@ function App() {
     fetchUsername();
   }, []);
 
-  useEffect(() => {
-    console.log(loading);
-  }, [loading]);
-
   const onLogout = async () => {
     try {
       await axios.post(
-        "host:5000/api/auth/logout",
+        "https://quizapp-68lr.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       );
