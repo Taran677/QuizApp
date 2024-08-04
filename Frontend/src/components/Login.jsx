@@ -23,7 +23,7 @@ export default function Login({
     const checkAuthStatus = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/protected-route",
+          "https://quizapp-68lr.onrender.com/api/protected-route",
           { withCredentials: true }
         );
         setIsAuthenticated(true);
@@ -47,8 +47,8 @@ export default function Login({
 
     try {
       const endpoint = isLogin
-        ? "http://localhost:5000/api/auth/login"
-        : "http://localhost:5000/api/auth/signup";
+        ? "https://quizapp-68lr.onrender.com/api/auth/login"
+        : "https://quizapp-68lr.onrender.com/api/auth/signup";
       const response = await axios.post(endpoint, { username, password });
 
       if (isLogin) {
@@ -72,7 +72,7 @@ export default function Login({
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/api/protected-route",
+        "https://quizapp-68lr.onrender.com/api/protected-route",
         { withCredentials: true }
       );
       console.log(response.data);

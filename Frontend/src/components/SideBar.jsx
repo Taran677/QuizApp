@@ -15,7 +15,7 @@ export default function SideBar({
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/auth/logout",
+        "https://quizapp-68lr.onrender.com/api/auth/logout",
         {},
         { withCredentials: true }
       );

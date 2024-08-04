@@ -15,7 +15,7 @@ export default function SubCategories({ solution, category,  setSelectedCat}) {
       // Add 'active' class to the clicked element
       e.target.classList.add(css.active);
       setSelectedCat(e.target.textContent)
-      window.location.href = `http://localhost:3000/get-started#modes`
+      window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#modes`
     } catch (error) {
       console.error("Error handling click:", error);
     }

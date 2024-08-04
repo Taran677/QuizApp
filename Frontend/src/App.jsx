@@ -21,7 +21,6 @@ import axios from "axios";
 import MyProfile from "./components/MyProfile.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 
-
 function App() {
   const [url, setUrl] = useState("");
   const [questions, setQuestions] = useState([]);
@@ -32,7 +31,10 @@ function App() {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/protected-route", { withCredentials: true });
+        const response = await axios.get(
+          "https://quizapp-68lr.onrender.com/api/protected-route",
+          { withCredentials: true }
+        );
         setUsername(response.data.username);
       } catch (error) {
         console.error("Error fetching username:", error);
@@ -49,7 +51,11 @@ function App() {
 
   const onLogout = async () => {
     try {
-      await axios.post("http://localhost:5000/api/auth/logout", {}, { withCredentials: true });
+      await axios.post(
+        "host:5000/api/auth/logout",
+        {},
+        { withCredentials: true }
+      );
       setUsername(null); // Clear username on logout
     } catch (error) {
       console.error("Error logging out:", error);
@@ -59,11 +65,11 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <SideBar 
-          username={username} 
-          setError={setError} 
-          Profile={Profile} 
-          Menu={Menu} 
+        <SideBar
+          username={username}
+          setError={setError}
+          Profile={Profile}
+          Menu={Menu}
           onLogout={onLogout}
         />
         {loading && <Loading />}
@@ -129,21 +135,13 @@ function App() {
                 Error={Error}
                 setError={setError}
                 username={username}
-                
               />
             }
           />
-          <Route
-            path="/profile"
-            element={
-              <MyProfile/>
-            }
-          />
+          <Route path="/profile" element={<MyProfile />} />
           <Route
             path="/leaderboard"
-            element={
-              <Leaderboard setError={setError} />
-            }
+            element={<Leaderboard setError={setError} />}
           />
         </Routes>
       </div>

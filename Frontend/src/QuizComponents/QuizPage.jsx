@@ -135,7 +135,7 @@ export default function QuizPage({
           const correctQuestionsValue = !isNaN(Number(score)) ? Number(score) : 0;
           const unansweredQuestionsValue = !isNaN(Number(countUnansweredQuestions())) ? Number(countUnansweredQuestions()) : 0;
       console.log(scoreValue, totalQuestionsValue, correctQuestionsValue, unansweredQuestionsValue)
-          const response = await fetch("http://localhost:5000/api/quiz/stats", {
+          const response = await fetch("https://quizapp-68lr.onrender.com/api/quiz/stats", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
