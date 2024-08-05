@@ -12,7 +12,11 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+const path = require('path');
 
+
+// Serve static files from the React app's build directory
+app.use(express.static(path.join(__dirname, 'build')));
 const dbName = process.env.DB_NAME;
 const collectionName = process.env.COLLECTION_NAME;
 
@@ -43,7 +47,9 @@ const connectToDB = async (req, res, next) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 app.post("/api/auth/signup", connectToDB, async (req, res) => {
   const { username, password } = req.body;
 
