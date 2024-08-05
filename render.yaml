@@ -1,7 +1,9 @@
 services:
   - type: web
-    name: my-web-service
-    buildCommand: npm install && npm run build # Installs dependencies and builds the project
+    name: my-backend-service
+    env: node  # This specifies the runtime environment as Node.js
+    buildCommand: npm install  # Command to install dependencies
+    startCommand: npm start  # Command to start the server
     routes:
       - type: rewrite
         source: /.*
