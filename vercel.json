@@ -9,5 +9,12 @@
       }
     }
   ],
-  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }],
+  "framework": "vite",
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
 }
