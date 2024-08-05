@@ -32,7 +32,7 @@ function App() {
     const fetchUsername = async () => {
       try {
         // Log the token from cookies or localStorage if needed
-        const token = document.cookie // Assuming token might be in cookies
+        const token = document.cookie
           .split('; ')
           .find(row => row.startsWith('authToken='))
           ?.split('=')[1];
@@ -62,7 +62,7 @@ function App() {
     try {
       await axios.post(
         "https://quizapp-68lr.onrender.com/api/auth/logout",
-        {},
+       
         { withCredentials: true }
       );
       setUsername(null); // Clear username on logout
