@@ -48,6 +48,7 @@ export default function QuizPage({
   useEffect(() => {
     setLoading(true);
     if (url) {
+      console.log(url)
       fetch(url)
         .then((response) => {
           if (!response.ok) {

@@ -16,7 +16,7 @@ const path = require('path');
 
 
 // Serve static files from the React app's build directory
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'Frontend','dist')));
 const dbName = process.env.DB_NAME;
 const collectionName = process.env.COLLECTION_NAME;
 
@@ -48,7 +48,7 @@ const connectToDB = async (req, res, next) => {
   }
 };
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+  res.sendFile(path.join(__dirname,'Frontend', 'dist', 'index.html'));
 });
 app.post("/api/auth/signup", connectToDB, async (req, res) => {
   const { username, password } = req.body;
