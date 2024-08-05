@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import TrivialComponent from "./components/TrivialComponent";
 import UrlGeneratorAPI from "./components/UrlGeneratorAPI";
@@ -31,7 +31,6 @@ function App() {
   useEffect(() => {
     const fetchUsername = async () => {
       try {
-        // Log the token from cookies or localStorage if needed
         const token = document.cookie
           .split('; ')
           .find(row => row.startsWith('authToken='))
@@ -52,20 +51,20 @@ function App() {
         setUsername(response.data.username);
       } catch (error) {
         console.error("Error fetching username:", error);
-        setUsername(null); // Clear username on error
+        setUsername(null);
       }
     };
 
     fetchUsername();
   }, []);
+
   const onLogout = async () => {
     try {
       await axios.post(
         "https://quizapp-68lr.onrender.com/api/auth/logout",
-       
         { withCredentials: true }
       );
-      setUsername(null); // Clear username on logout
+      setUsername(null);
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -152,6 +151,8 @@ function App() {
             path="/leaderboard"
             element={<Leaderboard setError={setError} />}
           />
+          {/* Catch-all route */}
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </BrowserRouter>
