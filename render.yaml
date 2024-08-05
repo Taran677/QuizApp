@@ -5,4 +5,4 @@ services:
     routes:
       - type: rewrite
         source: /.*
-        destination: /index.html # Ensures all routes are handled by the client-side application
+        destination: /
