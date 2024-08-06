@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import styles from './Leaderboard.module.css';
 import Loading from './Loading';
 
-const Leaderboard = ({setError}) => {
+const Leaderboard = ({setError, baseUrl}) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   useEffect(() => {
     const fetchLeaderboardData = async () => {
       try {
-        const response = await fetch('https://quizapp-68lr.onrender.com/api/leaderboard', {
+        const response = await fetch(`${baseUrl}/api/leaderboard`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

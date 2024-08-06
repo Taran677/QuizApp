@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import css from "./UrlGenerator.module.css";
 
-export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
+export default function Difficulties({ setDifficulty, Yellow, Red, Green, frontUrl }) {
   const [active, setActive] = useState(null);
 
   return (
@@ -15,7 +15,7 @@ export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
           onClick={() => {
             setActive("green");
             setDifficulty("easy");
-            window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#nooqs`
+            window.location.href = `${frontUrl}/get-started#nooqs`
           }}
         >
           <span className={css.span2}>Easy</span>
@@ -28,7 +28,7 @@ export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
           onClick={() => {
             setActive("yellow");
             setDifficulty("medium");
-            window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#nooqs`
+            window.location.href = `${frontUrl}/get-started#nooqs`
           }}
         >
           <span className={css.span2}>Medium</span>
@@ -41,7 +41,7 @@ export default function Difficulties({ setDifficulty, Yellow, Red, Green }) {
           onClick={() => {
             setActive("red");
             setDifficulty("hard");
-            window.location.href = `https://quiz-app-1z1f.vercel.app/get-started#nooqs`
+            window.location.href = `${frontUrl}/get-started#nooqs`
           }}
         >
           <span className={css.span2}>Hard</span>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from './Profile.module.css';
 import Loading from "./Loading.jsx";
 
-const Profile = () => {
+const Profile = ({baseUrl}) => {
   const [userStats, setUserStats] = useState(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Profile = () => {
         console.log('Token:', token);
 
         const response = await axios.get(
-          'https://quizapp-68lr.onrender.com/api/user/stats',
+          `${baseUrl}/api/user/stats`,
           {
             headers: {
               'Content-Type': 'application/json',

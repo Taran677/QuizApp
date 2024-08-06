@@ -21,12 +21,16 @@ import axios from "axios";
 import MyProfile from "./components/MyProfile.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
 
+
+
 function App() {
   const [url, setUrl] = useState("");
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [username, setUsername] = useState(null);
+  const baseUrl = import.meta.env.REACT_APP_BACK_URL;
+  const frontUrl = import.meta.env.REACT_APP_FRONT_URL || "http://localhost:5173";
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -38,7 +42,7 @@ function App() {
         console.log('Token:', token);
 
         const response = await axios.get(
-          "https://quizapp-68lr.onrender.com/api/protected-route",
+          `${baseUrl}/api/protected-route`,
           {
             withCredentials: true,
             headers: {
@@ -56,12 +60,12 @@ function App() {
     };
 
     fetchUsername();
-  }, []);
+  }, [baseUrl]);
 
   const onLogout = async () => {
     try {
       await axios.post(
-        "https://quizapp-68lr.onrender.com/api/auth/logout",
+        `${baseUrl}/api/auth/logout`,
         { withCredentials: true }
       );
       setUsername(null);
@@ -79,6 +83,8 @@ function App() {
           Profile={Profile}
           Menu={Menu}
           onLogout={onLogout}
+          baseUrl={baseUrl}
+          frontUrl={frontUrl}
         />
         {loading && <Loading />}
         {error && <Error error={error} setError={setError} />}
@@ -93,6 +99,8 @@ function App() {
                 Error={Error}
                 setError={setError}
                 username={username}
+                baseUrl={baseUrl}
+                frontUrl={frontUrl}
               />
             }
           />
@@ -106,6 +114,8 @@ function App() {
                 setError={setError}
                 username={username}
                 setUsername={setUsername}
+                baseUrl={baseUrl}
+                frontUrl={frontUrl}
               />
             }
           />
@@ -126,6 +136,8 @@ function App() {
                 setLoading={setLoading}
                 Error={Error}
                 setError={setError}
+                baseUrl={baseUrl}
+                frontUrl={frontUrl}
               />
             }
           />
@@ -143,15 +155,16 @@ function App() {
                 Error={Error}
                 setError={setError}
                 username={username}
+                baseUrl={baseUrl}
+                frontUrl={frontUrl}
               />
             }
           />
-          <Route path="/profile" element={<MyProfile />} />
+          <Route path="/profile" element={<MyProfile baseUrl={baseUrl} frontUrl={frontUrl} />} />
           <Route
             path="/leaderboard"
-            element={<Leaderboard setError={setError} />}
+            element={<Leaderboard setError={setError} baseUrl={baseUrl} frontUrl={frontUrl} />}
           />
-          {/* Catch-all route */}
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

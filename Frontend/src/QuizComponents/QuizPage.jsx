@@ -16,6 +16,7 @@ export default function QuizPage({
   error,
   setError,
   username,
+  baseUrl
 }) {
   const [begin, setBegin] = useState(false);
   const [index, setIndex] = useState(0);
@@ -136,7 +137,7 @@ export default function QuizPage({
           const correctQuestionsValue = !isNaN(Number(score)) ? Number(score) : 0;
           const unansweredQuestionsValue = !isNaN(Number(countUnansweredQuestions())) ? Number(countUnansweredQuestions()) : 0;
       console.log(scoreValue, totalQuestionsValue, correctQuestionsValue, unansweredQuestionsValue)
-          const response = await fetch("https://quizapp-68lr.onrender.com/api/quiz/stats", {
+          const response = await fetch(`${baseUrl}/api/quiz/stats`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

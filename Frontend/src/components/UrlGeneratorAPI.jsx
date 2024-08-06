@@ -19,6 +19,7 @@ export default function UrlGeneratorAPI({
   loading,
   setLoading,
   setError,
+  frontUrl,
 }) {
   const [data, setData] = useState([]);
   const [amount, setAmount] = useState(0);
@@ -138,6 +139,7 @@ export default function UrlGeneratorAPI({
             solution={solution}
             category={category}
             setSelectedCat={setSelectedCat}
+            frontUrl={frontUrl}
           />
         )}{" "}
         <Difficulties
@@ -145,6 +147,7 @@ export default function UrlGeneratorAPI({
           Yellow={Yellow}
           Green={Green}
           Red={Red}
+          frontUrl={frontUrl}
         ></Difficulties>{" "}
         {viewAmount === true && (
           <Form

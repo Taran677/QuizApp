@@ -9,13 +9,15 @@ export default function SideBar({
   setError,
   username,
   onLogout,
+  baseUrl,
+  frontUrl
 }) {
   const [show, setShow] = useState(false);
 
   const handleLogout = async () => {
     try {
       await axios.post(
-        "https://quizapp-68lr.onrender.com/api/auth/logout",
+        `${baseUrl}/api/auth/logout`,
         {},
         {
           withCredentials: true, // This ensures cookies (including authToken) are sent with the request
@@ -25,7 +27,7 @@ export default function SideBar({
         onLogout();
       }
 
-      window.location.href = "https://quiz-app-1z1f.vercel.app";
+      window.location.href = `${frontUrl}`;
     } catch (error) {
       console.error("Logout failed:", error);
       setError(`${error}`);

@@ -11,6 +11,7 @@ export default function Login({
   setError,
   username,
   setUsername,
+  baseUrl
 }) {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true); // State to toggle between login and signup
@@ -23,7 +24,7 @@ export default function Login({
     const checkAuthStatus = async () => {
       try {
         const response = await axios.get(
-          "https://quizapp-68lr.onrender.com/api/protected-route",
+          `${baseUrl}/api/protected-route`,
           { withCredentials: true }
         );
         setIsAuthenticated(true);
@@ -35,7 +36,7 @@ export default function Login({
     };
 
     checkAuthStatus();
-  }, [navigate]);
+  }, [navigate, baseUrl]);
 
   useEffect(() => {
     console.log("Success:", success, "Error:", error);
@@ -47,8 +48,8 @@ export default function Login({
 
     try {
       const endpoint = isLogin
-        ? "https://quizapp-68lr.onrender.com/api/auth/login"
-        : "https://quizapp-68lr.onrender.com/api/auth/signup";
+        ? `${baseUrl}/api/auth/login`
+        : `${baseUrl}/api/auth/signup`;
       const response = await axios.post(endpoint, { username, password });
 
       if (isLogin) {
@@ -72,7 +73,7 @@ export default function Login({
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://quizapp-68lr.onrender.com/api/protected-route",
+        `${baseUrl}/api/protected-route`,
         { withCredentials: true }
       );
       console.log(response.data);
