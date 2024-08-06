@@ -1,8 +1,6 @@
 services:
   - type: web
-    name: my-web-service
-    buildCommand: npm install && npm run build # Installs dependencies and builds the project
-    routes:
-      - type: rewrite
-        source: /.*
-        destination: /
+    name: my-backend-service
+    runtime: node
+    buildCommand: npm install  # Command to install dependencies
+    startCommand: npm start  # Command to start the server
