@@ -17,14 +17,14 @@ const dbName = process.env.DB_NAME;
 const collectionName = process.env.COLLECTION_NAME;
 app.use(express.json());
 const corsOptions = {
-  origin: process.env.VITE_REACT_APP_FRONT_URL,
+  origin: 'https://tiny-manatee-d7052c.netlify.app', // Your frontend URL
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
 
-// Apply CORS middleware
 app.use(cors(corsOptions));
+
 
 app.use(cookieParser());
 
