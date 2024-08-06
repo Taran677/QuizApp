@@ -21,19 +21,19 @@ export default function Login({
   const navigate = useNavigate();
 console.log(baseUrl)
   useEffect(() => {
-    const checkAuthStatus = async () => {
-      try {
-        const response = await axios.get(
-          `${baseUrl}/api/protected-route`,
-          { withCredentials: true }
-        );
-        setIsAuthenticated(true);
-        // Redirect to /get-started if authenticated
-        navigate("/get-started");
-      } catch (error) {
-        setIsAuthenticated(false);
-      }
-    };
+      const checkAuthStatus = async () => {
+        try {
+          const response = await axios.get(
+            `${baseUrl}/api/protected-route`,
+            { withCredentials: true }
+          );
+          setIsAuthenticated(true);
+          // Redirect to /get-started if authenticated
+          navigate("/get-started");
+        } catch (error) {
+          setIsAuthenticated(false);
+        }
+      };
 
     checkAuthStatus();
   }, [navigate, baseUrl]);
