@@ -18,7 +18,7 @@ const collectionName = process.env.COLLECTION_NAME;
 
 app.use(express.json());
 const corsOptions = {
-  origin: 'https://quiz-app-1z1f.vercel.app', 
+  origin: process.env.BASE_URL, 
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true, 
