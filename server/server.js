@@ -17,10 +17,10 @@ const dbName = process.env.DB_NAME;
 const collectionName = process.env.COLLECTION_NAME;
 app.use(express.json());
 const corsOptions = {
-  origin: process.env.VITE_REACT_APP_FRONT_URL, 
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true, 
+  origin: process.env.VITE_REACT_APP_FRONT_URL,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
 };
 
 // Apply CORS middleware
@@ -42,7 +42,9 @@ const connectToDB = async (req, res, next) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
+app.get("/test", (req, res) => {
+  res.send("running");
+});
 app.post("/api/auth/signup", connectToDB, async (req, res) => {
   const { username, password } = req.body;
 
@@ -93,13 +95,15 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
     const secretKey = process.env.JWT_SECRET;
     const options = { expiresIn: "1d" };
 
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "1d" });
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      secure: true, 
-      maxAge: 24 * 60 * 60 * 1000, 
-      sameSite: 'None',
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "None",
     });
 
     res
@@ -114,7 +118,7 @@ app.post("/api/auth/login", connectToDB, async (req, res) => {
 
 const verifyToken = (req, res, next) => {
   const token = req.cookies.authToken;
-  console.log("Token received:", token); 
+  console.log("Token received:", token);
 
   if (!token) {
     return res.status(403).json({ message: "No token provided" });
@@ -129,7 +133,6 @@ const verifyToken = (req, res, next) => {
     next();
   });
 };
-
 
 app.get("/api/protected-route", verifyToken, (req, res) => {
   res.json({ message: "This is a protected route", username: req.username });
