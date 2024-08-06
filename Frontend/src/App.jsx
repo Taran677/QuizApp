@@ -31,7 +31,7 @@ function App() {
   const [error, setError] = useState("");
   const [username, setUsername] = useState(null);
   const baseUrl = import.meta.env.VITE_REACT_APP_BACK_URL;
-  const frontUrl = import.meta.env.VITE_REACT_APP_FRONT_URL || "http://localhost:5173";
+  const frontUrl = import.meta.env.VITE_REACT_APP_FRONT_URL || "https://tiny-manatee-d7052c.netlify.app";
   console.log(baseUrl, frontUrl)
   useEffect(() => {
     const fetchUsername = async () => {
