@@ -19,7 +19,7 @@ export default function Login({
   const [theLogin, setTheLogin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-
+console.log(baseUrl)
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
