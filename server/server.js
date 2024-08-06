@@ -15,7 +15,6 @@ const client = new MongoClient(uri, {
 
 const dbName = process.env.DB_NAME;
 const collectionName = process.env.COLLECTION_NAME;
-
 app.use(express.json());
 const corsOptions = {
   origin: process.env.BASE_URL, 
@@ -323,4 +322,4 @@ app.delete("/api/users/:id", connectToDB, async (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log("App is running at port ${PORT}!"));
+app.listen(PORT, () => console.log(`App is running at port ${PORT}!`));

@@ -16,6 +16,7 @@ export default function SideBar({
 
   const handleLogout = async () => {
     try {
+      console.log(baseUrl)
       await axios.post(
         `${baseUrl}/api/auth/logout`,
         {},

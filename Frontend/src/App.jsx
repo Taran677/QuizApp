@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import "./App.css";
 import TrivialComponent from "./components/TrivialComponent";
 import UrlGeneratorAPI from "./components/UrlGeneratorAPI";
@@ -29,9 +30,9 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [username, setUsername] = useState(null);
-  const baseUrl = import.meta.env.REACT_APP_BACK_URL;
-  const frontUrl = import.meta.env.REACT_APP_FRONT_URL || "http://localhost:5173";
-
+  const baseUrl = import.meta.env.VITE_REACT_APP_BACK_URL;
+  const frontUrl = import.meta.env.VITE_REACT_APP_FRONT_URL || "http://localhost:5173";
+  console.log(baseUrl, frontUrl)
   useEffect(() => {
     const fetchUsername = async () => {
       try {
