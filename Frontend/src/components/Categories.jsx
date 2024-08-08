@@ -13,6 +13,7 @@ export default function Categories({
   EntertainmentImg,
   Misc,
   Science,
+  Atom,
 }) {
   useEffect(() => {
     if (data && data.trivia_categories) {
@@ -54,9 +55,13 @@ export default function Categories({
 
   return (
     <div className={css.category}>
-      <h2 className={`${css.label} ${css.categoryLabel}`}>
-        Choose a Category!
-      </h2>
+      <div className={css.headers}>
+        <img src={Atom} alt="" className={css.absImg} />
+        <h2 className={`${css.label} ${css.categoryLabel}`}>
+          Choose a Category!
+        </h2>
+      </div>
+
       <div className={css.grid}>
         <a
           onClick={() => handleCategorySelection("entertainment")}

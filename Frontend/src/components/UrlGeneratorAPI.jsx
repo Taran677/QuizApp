@@ -20,6 +20,8 @@ export default function UrlGeneratorAPI({
   setLoading,
   setError,
   frontUrl,
+  Atom,
+  Rocket
 }) {
   const [data, setData] = useState([]);
   const [amount, setAmount] = useState(0);
@@ -132,6 +134,7 @@ export default function UrlGeneratorAPI({
           arrayOfC={arrayOfC}
           setArrayOfC={setArrayOfC}
           setArray={setArray}
+          Atom={Atom}
           EntertainmentImg={EntertainmentImg}
         ></Categories>
         {solution.length > 0 && (
@@ -147,6 +150,7 @@ export default function UrlGeneratorAPI({
           Yellow={Yellow}
           Green={Green}
           Red={Red}
+          Rocket={Rocket}
           frontUrl={frontUrl}
         ></Difficulties>{" "}
         {viewAmount === true && (

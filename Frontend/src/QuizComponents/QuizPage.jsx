@@ -16,7 +16,8 @@ export default function QuizPage({
   error,
   setError,
   username,
-  baseUrl
+  baseUrl,
+  RoboQp,
 }) {
   const [begin, setBegin] = useState(false);
   const [index, setIndex] = useState(0);
@@ -44,16 +45,16 @@ export default function QuizPage({
         setUrl(localUrl);
       }
     }
-  }, [url, setUrl]);
+  }, [begin]);
 
   useEffect(() => {
-    setLoading(true);
     if (url) {
-      console.log(url)
+      setLoading(true);
       fetch(url)
         .then((response) => {
-          if (!response.ok) {
+          if (!response) {
             setLoading(false);
+            console.log(response);
             setError("Network response was not ok");
             throw new Error("Network response was not ok");
           }
@@ -76,7 +77,7 @@ export default function QuizPage({
             setSelectedOptions(new Array(finalData.results.length).fill(""));
             setViewAnswers(new Array(finalData.results.length).fill(false));
           } else {
-            console.log("reset limit exceeded");
+            console.log("Request limit exceeded");
           }
           setLoading(false);
         })
@@ -86,7 +87,7 @@ export default function QuizPage({
           setError(err);
         });
     }
-  }, [url, setQuestions]);
+  }, [begin]);
 
   const handleOptionClick = (option) => {
     if (!answeredQuestions[index]) {
@@ -133,10 +134,23 @@ export default function QuizPage({
         try {
           // Ensure variables are declared and initialized before usage
           const scoreValue = !isNaN(Number(score)) ? Number(score) : 0;
-          const totalQuestionsValue = !isNaN(Number(questions.results.length)) ? Number(questions.results.length) : 0;
-          const correctQuestionsValue = !isNaN(Number(score)) ? Number(score) : 0;
-          const unansweredQuestionsValue = !isNaN(Number(countUnansweredQuestions())) ? Number(countUnansweredQuestions()) : 0;
-      console.log(scoreValue, totalQuestionsValue, correctQuestionsValue, unansweredQuestionsValue)
+          const totalQuestionsValue = !isNaN(Number(questions.results.length))
+            ? Number(questions.results.length)
+            : 0;
+          const correctQuestionsValue = !isNaN(Number(score))
+            ? Number(score)
+            : 0;
+          const unansweredQuestionsValue = !isNaN(
+            Number(countUnansweredQuestions())
+          )
+            ? Number(countUnansweredQuestions())
+            : 0;
+          console.log(
+            scoreValue,
+            totalQuestionsValue,
+            correctQuestionsValue,
+            unansweredQuestionsValue
+          );
           const response = await fetch(`${baseUrl}/api/quiz/stats`, {
             method: "POST",
             headers: {
@@ -150,21 +164,19 @@ export default function QuizPage({
               unansweredQuestions: unansweredQuestionsValue,
             }),
           });
-      
+
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
           }
-      
+
           const result = await response.json();
-          console.log('Quiz stats saved:', result);
+          console.log("Quiz stats saved:", result);
         } catch (error) {
           console.error("Error posting quiz stats:", error);
         }
       };
-      
+
       postData();
-      
-      
     }
     console.log(answeredQuestions);
   }, [action, answeredQuestions]);
@@ -175,7 +187,7 @@ export default function QuizPage({
 
   return (
     <>
-      {!begin && quiz && <QuizStarter setBegin={setBegin} />}
+      {!begin && quiz && <QuizStarter setBegin={setBegin} RoboQp={RoboQp} />}
       {begin && quiz && shuffledQuestions.length > 0 && (
         <div className={css.grid}>
           <div className={css.prev} onClick={handlePrevClick}>
@@ -245,27 +257,35 @@ export default function QuizPage({
           <div className={css.img}>
             <img src={Robo} alt="robo" />
           </div>
-          <div className={css.details}>
-            <div className={css.scores}>
-              <h2>Score</h2>
-              <p className={css.p}>{score}</p>
-            </div>
-            <div className={css.noofques}>
-              <h2>Number of Questions</h2>
-              <p className={css.p}>{questions.results.length}</p>
-            </div>
-            <div className={css.correctQ}>
-              <h2>Correct Questions</h2>
-              <p className={css.p}>{score}</p>
-            </div>
-            <div className={css.unanswered}>
-              <h2>Unanswered Questions</h2>
-              <p className={css.p}>{countUnansweredQuestions()}</p>
-            </div>
-          </div>
+          <table className={css.details}>
+            <thead>
+              <tr className={css.mainTr}>
+                <th>Category</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody className={css.body}>
+              <tr className={css.scores}>
+                <td>Score</td>
+                <td className={css.p}>{score}</td>
+              </tr>
+              <tr className={css.noofques}>
+                <td>Number of Questions</td>
+                <td className={css.p}>{questions.results.length}</td>
+              </tr>
+              <tr className={css.correctQ}>
+                <td>Correct Questions</td>
+                <td className={css.p}>{score}</td>
+              </tr>
+              <tr className={css.unanswered}>
+                <td>Unanswered Questions</td>
+                <td className={css.p}>{countUnansweredQuestions()}</td>
+              </tr>
+            </tbody>
+          </table>
 
           <button className={`${css.btnStart} ${css.btn}`}>
-            <Link to={"/"}>Go to Home</Link>
+            <Link to={"/get-started"}>Go to Home</Link>
           </button>
         </div>
       )}

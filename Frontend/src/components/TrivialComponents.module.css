@@ -1,65 +1,144 @@
-h1 {
-    font-family: "Roboto Slab", serif;
+.heading {
+    font-family: "Josefin Slab", sans-serif;
+    text-align: left;
+    color: rgb(40, 200, 200);
+    font-weight: 800;
+    position: relative;
+    font-size: 5rem;
+    width: 100%;
+}
+
+.para {
+    display: flex;
+    color: rgb(31, 148, 148);
+    font-family: "Josefin sans";
+    max-width: 40rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 2rem;
 }
 
 html,
 body {
     width: 100%;
+    background: linear-gradient(#012f41, #02161d) !important;
+
 }
 
 .main {
     width: 100%;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 }
 
-.grid {
-    display: grid;
+.flex {
+    display: flex;
+    flex-direction: column;
     width: 100%;
     place-items: center;
     place-content: center;
-    background: radial-gradient(circle, #00F5D4, #00BBF9);
     height: 100vh;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 3rem;
+    font-family: "PT Sans Narrow", sans-serif;
+    padding-top: 1rem;
 }
 
-.grid img {
-    max-height: 15rem;
-    ;
-}
 
-h1 {
-    font-size: 5rem;
-}
+
+
 
 .btns {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
+    width: 100%;
 }
 
 .btn {
+    margin-block: 1rem;
     display: flex;
     text-align: center;
-    margin-inlinE: 1rem;
-    padding: 1rem 2rem;
-   border-radius: 1rem;
-   font-family: "Josefin Sans", serif;
-   text-decoration: none;
-   color: #000 !important;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    font-family: "Roboto Sans", sans-serif;
+    text-decoration: none;
+    background: linear-gradient(160deg, rgb(214, 254, 255), rgb(40, 200, 200));
+    color: rgb(24, 75, 75);
+    font-weight: 700;
+    transition: 0.2s ease all;
+    position: fixed;
+    bottom: 1rem;
+    align-items: center;
+    justify-content: center;
 }
 
-.btn:nth-of-type(1){
-    background: #F15BB5;
+.btn svg {
+    transform: rotate(45deg);
+    transition: 0.3s ease;
+    margin-left: 1rem;
 }
 
-.btn:nth-of-type(2){
-    background: #FEE440;
+.btn:hover {
+    background: linear-gradient(-20deg, rgb(214, 254, 255), rgb(40, 200, 200));
+    z-index: 1;
+
+    box-shadow: 0rem 0rem 0.5rem aqua;
 }
 
-@media screen and (max-width:576px) {
-    html{
-        font-size: 80%;
+.btn svg:hover {
+    transform: rotate(0deg);
+}
+
+.span {
+    color: rgb(135, 251, 255);
+}
+
+.head {
+    max-height: 7rem;
+}
+
+.head img {
+    max-width: 100%;
+    position: static;
+    max-height: 7rem;
+}
+
+@media screen and (max-width:768px) {
+    html {
+        font-size: 90%;
+    }
+
+    .main {
+        flex-direction: column;
+        padding-block: 3rem;
+        height: 100vh;
+
+    }
+
+    .btns {
+        position: absolute;
+    }
+
+    .lg {
+        display: none;
+    }
+
+    .btn {
+        padding: 0.5rem;
+        margin: 0;
+        bottom: 3rem;
+    }
+
+    .main img {
+        height: 17rem;
+    }
+
+    .btn svg {
+        margin-left: 0;
+
     }
 }

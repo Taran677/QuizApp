@@ -5,7 +5,6 @@ import TrivialComponent from "./components/TrivialComponent";
 import UrlGeneratorAPI from "./components/UrlGeneratorAPI";
 import { useEffect, useState } from "react";
 import QuizPage from "./QuizComponents/QuizPage";
-import Robo from "./assets/robo.svg";
 import EntertainmentImg from "./assets/entertainment.svg";
 import Green from "./assets/green.svg";
 import Misc from "./assets/misc.svg";
@@ -21,8 +20,14 @@ import Menu from "./assets/menu.svg";
 import axios from "axios";
 import MyProfile from "./components/MyProfile.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
-
-
+import Robo from "./assets/robo.svg"
+import RoboLogin from "./assets/robologin.svg"
+import Logo from "./assets/logo.svg"
+import Atom from "./assets/Atom.svg"
+import Rocket from "./assets/rocket.svg"
+import RoboQp from "./assets/roboqp.svg"
+import RoboError from "./assets/roboError.svg"
+import RoboLeaderboard from "./assets/roboLeaderboard.svg"
 
 function App() {
   const [url, setUrl] = useState("");
@@ -88,7 +93,7 @@ function App() {
           frontUrl={frontUrl}
         />
         {loading && <Loading />}
-        {error && <Error error={error} setError={setError} />}
+        {error && <Error error={error} setError={setError} RoboError={RoboError} />}
         <Routes>
           <Route
             path="/"
@@ -102,6 +107,7 @@ function App() {
                 username={username}
                 baseUrl={baseUrl}
                 frontUrl={frontUrl}
+                Logo={Logo}
               />
             }
           />
@@ -117,6 +123,7 @@ function App() {
                 setUsername={setUsername}
                 baseUrl={baseUrl}
                 frontUrl={frontUrl}
+                RoboLogin={RoboLogin}
               />
             }
           />
@@ -139,6 +146,8 @@ function App() {
                 setError={setError}
                 baseUrl={baseUrl}
                 frontUrl={frontUrl}
+                Atom={Atom}
+                Rocket={Rocket}
               />
             }
           />
@@ -158,13 +167,14 @@ function App() {
                 username={username}
                 baseUrl={baseUrl}
                 frontUrl={frontUrl}
+                RoboQp={RoboQp}
               />
             }
           />
           <Route path="/profile" element={<MyProfile baseUrl={baseUrl} frontUrl={frontUrl} />} />
           <Route
             path="/leaderboard"
-            element={<Leaderboard setError={setError} baseUrl={baseUrl} frontUrl={frontUrl} />}
+            element={<Leaderboard setError={setError} baseUrl={baseUrl} frontUrl={frontUrl} RoboLeaderboard={RoboLeaderboard} />}
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

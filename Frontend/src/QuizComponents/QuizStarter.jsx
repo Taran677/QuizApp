@@ -1,9 +1,9 @@
 import React from "react";
 import css from "./QuizPage.module.css";
 
-export default function QuizStarter({ setBegin }) {
+export default function QuizStarter({ setBegin, RoboQp }) {
   return (
-    <main className={css.main}>
+    <main className={css.main}><img className={css.roboqp} src={RoboQp} alt="Robo" />
       <h1 className={css.mainHead}>Instructions</h1>
       <div className={css.instructions}>
         <ul className={css.orderedList}>

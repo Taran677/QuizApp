@@ -27,6 +27,7 @@ export default function Form({ setAmount, amount, numberOfQues }) {
           className={css.input}
           onChange={handleInputChange}
           onMouseUp={handleMouseUp} // Set the parent state when the mouse button is released
+          onTouchEnd={handleMouseUp} // Set the parent state when the mouse button is released
           type="range"
           name="amount"
           id="amount"

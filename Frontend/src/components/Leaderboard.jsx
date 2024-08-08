@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Leaderboard.module.css';
 import Loading from './Loading';
 
-const Leaderboard = ({setError, baseUrl}) => {
+const Leaderboard = ({setError, baseUrl, RoboLeaderboard}) => {
   const [leaderboardData, setLeaderboardData] = useState([]);
 
   useEffect(() => {
@@ -37,6 +37,7 @@ const Leaderboard = ({setError, baseUrl}) => {
 
   return (
     <div className={styles.leaderboardContainer}>
+      <img src={RoboLeaderboard} className={styles.roboLeaderboard} alt="robo" />
       <h1 className={styles.leaderboardTitle}>Leaderboard</h1>
       <table className={styles.leaderboardTable}>
         <thead>
@@ -51,7 +52,7 @@ const Leaderboard = ({setError, baseUrl}) => {
             <tr key={user.username}>
               <td>{index + 1}</td>
               <td>{user.username}</td>
-              <td>{user.score}</td>
+              <td>{user.score||0}</td>
             </tr>
           ))}
         </tbody>

@@ -11,7 +11,8 @@ export default function Login({
   setError,
   username,
   setUsername,
-  baseUrl
+  baseUrl,
+  RoboLogin,
 }) {
   const [password, setPassword] = useState("");
   const [isLogin, setIsLogin] = useState(true); // State to toggle between login and signup
@@ -19,21 +20,20 @@ export default function Login({
   const [theLogin, setTheLogin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-console.log(baseUrl)
+  console.log(baseUrl);
   useEffect(() => {
-      const checkAuthStatus = async () => {
-        try {
-          const response = await axios.get(
-            `${baseUrl}/api/protected-route`,
-            { withCredentials: true }
-          );
-          setIsAuthenticated(true);
-          // Redirect to /get-started if authenticated
-          navigate("/get-started");
-        } catch (error) {
-          setIsAuthenticated(false);
-        }
-      };
+    const checkAuthStatus = async () => {
+      try {
+        const response = await axios.get(`${baseUrl}/api/protected-route`, {
+          withCredentials: true,
+        });
+        setIsAuthenticated(true);
+        // Redirect to /get-started if authenticated
+        navigate("/get-started");
+      } catch (error) {
+        setIsAuthenticated(false);
+      }
+    };
 
     checkAuthStatus();
   }, [navigate, baseUrl]);
@@ -72,10 +72,9 @@ console.log(baseUrl)
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(
-        `${baseUrl}/api/protected-route`,
-        { withCredentials: true }
-      );
+      const response = await axios.get(`${baseUrl}/api/protected-route`, {
+        withCredentials: true,
+      });
       console.log(response.data);
     } catch (error) {
       console.error(error.response ? error.response.data : error.message);
@@ -100,64 +99,79 @@ console.log(baseUrl)
   };
 
   return (
-    <div className={styles.loginContainer}>
-      <h2 className={styles.loginTitle}>
-        {isLogin
-          ? `Welcome Back ${
-              removeDomain(username) ? removeDomain(username) : ""
-            }!`
-          : "Sign Up"}
-      </h2>
+    <>
+        <div className={styles.loginContainer}>        <img className={styles.robo} src={RoboLogin} alt="robo" />
 
-      <form onSubmit={handleSubmit} className={styles.loginForm}>
-        <div className={styles.formGroup}>
-          <label htmlFor="username" className={styles.formLabel}>
-            Username
-          </label>
-          <input
-            type="text"
-            id="username"
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-            required
-            className={styles.formInput}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="password" className={styles.formLabel}>
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            minLength={8}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className={styles.formInput}
-          />
-        </div>
-        {error && <p className={styles.error}>{error}</p>}
-        {success && <p className={styles.success}>{success}</p>}
-        <button type="submit" className={styles.loginButton}>
-          {isLogin ? "Login" : "Sign Up"}
-        </button>
+          <h2 className={styles.loginTitle}>
+            {isLogin
+              ? `Welcome Back ${
+                  removeDomain(username) ? removeDomain(username) : ""
+                }!`
+              : "Sign Up"}
+          </h2>
 
-        {username && username !== "User" && theLogin && isLogin && success ? (
-          <Link to="/get-started" className={styles.loginButton}>
-            Play
-          </Link>
-        ) : null}
-      </form>
-      <button
-        onClick={() => setIsLogin(!isLogin)}
-        className={styles.toggleButton}
-      >
-        {isLogin
-          ? "Don't have an account? Sign Up"
-          : "Already have an account? Login"}
-      </button>
-    </div>
+          <form onSubmit={handleSubmit} className={styles.loginForm}>
+            <div className={styles.formGroup}>
+              <label htmlFor="username" className={styles.formLabel}>
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                onChange={(e) => {
+                  setUsername(e.target.value);
+                }}
+                required
+                className={styles.formInput}
+              />
+            </div>
+            <div className={styles.formGroup}>
+              <label htmlFor="password" className={styles.formLabel}>
+                Password
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                minLength={8}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className={styles.formInput}
+              />
+            </div>
+            {error && <p className={styles.error}>{error}</p>}
+            {success && <p className={styles.success}>{success}</p>}
+            <button type="submit" className={styles.loginButton}>
+              {isLogin ? "Login" : "Sign Up"}
+            </button>
+
+            {username &&
+            username !== "User" &&
+            theLogin &&
+            isLogin &&
+            success ? (
+              <Link to="/get-started" className={styles.loginButton}>
+                Play
+              </Link>
+            ) : null}
+          </form>
+          <button
+            onClick={() => setIsLogin(!isLogin)}
+            className={styles.toggleButton}
+          >
+            {isLogin ? (
+              <>
+                <span className={styles.sp1}>Don't have an account?</span>
+                <span className={styles.sp2}>Sign Up</span>
+              </>
+            ) : (
+              <>
+                <span className={styles.sp1}>Already have an account?</span>
+                <span className={styles.sp2}>Login</span>
+              </>
+            )}
+          </button>
+        </div>
+    </>
   );
 }

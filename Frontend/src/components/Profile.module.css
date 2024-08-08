@@ -1,52 +1,46 @@
 :root {
-    --amethyst: #9b5de5ff;
-    --brilliant-rose: #f15bb5ff;
-    --maize: #fee440ff;
-    --deep-sky-blue: #00bbf9ff;
-    --aquamarine: #00f5d4ff;
-  }
-  
-  .profileContainer {
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid var(--amethyst);
-    border-radius: 8px;
-    background-color: var(--maize);
-    width: 90%;
-  }
-  
-  .profileTitle {
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: var(--amethyst);
-  }
-  
-  .statItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--amethyst);
-  }
-  
-  .statItem:last-child {
-    border-bottom: none;
-  }
-  
-.statItem:nth-of-type(1)>.statValue{
+  --dark-cyan: #012229;
+  --aqua: aqua;
+  --deep-aqua: #043b41;
+  --bright-cyan: #00bbf9;
+  --light-aqua: #64becc;
+  --dark-teal: #074757;
+  --hover-teal: #1d7171;
+}
+
+.profileContainer {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid var(--dark-cyan);
+  border-radius: 8px;
+  background:radial-gradient(circle at top, cyan, aqua, #012229);;
+  width: 90%;
+  font-family: "Josefin Slab", serif;
+  color: #01191f;
+  font-weight: 600;
+}
+
+.profileTitle {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: var(--deep-aqua);
+  font-weight: 700 !important;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--dark-cyan);
+}
+
+.statItem:last-child {
+  border-bottom: none;
+}
+
+.statItem:nth-of-type(1) > .statValue {
   padding-right: 1rem;
   overflow: hidden;
 }
 
-  .statLabel {
-    font-weight: bold;
-    color: var(--deep-sky-blue);
-    font-family: "Josefin sans", serif;
-  }
-  
-  .statValue {
-    color: var(--brilliant-rose);
-    font-family: "Josefin sans", serif;
-  }
-  
-  

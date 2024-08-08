@@ -1,27 +1,30 @@
-:root {
-    --amethyst: #9b5de5ff;
-    --brilliant-rose: #f15bb5ff;
-    --maize: #fee440ff;
-    --deep-sky-blue: #00bbf9ff;
-    --aquamarine: #00f5d4ff;
+
+
+.roboLeaderboard{
+    position: absolute;
+    height: 10rem;
+    top: -10rem;
+    left: 50%;
+    translate: -50%;
 }
 
 .leaderboardContainer {
+    top: 3rem;
+    position: relative;
     width: 75%;
     margin: 0 auto;
     margin-top: 2rem;
     padding: 20px;
-    border: 1px solid var(--amethyst);
     border-radius: 8px;
-    background-color: var(--maize);
+    background: radial-gradient(circle at top, cyan, aqua, #012229);
 }
 
 .leaderboardTitle {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-    color: var(--amethyst);
-}
+    font-family: "Josefin Slab", serif;
+color: #043b41;}
 
 .leaderboardTable {
     border-collapse: collapse;
@@ -34,19 +37,23 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+
 }
 
 .leaderboardTable>thead>tr:hover {
-    background: var(--deep-sky-blue);
+    background: transparent ;
 }
 
 .leaderboardTable>thead>tr>th {
     display: flex;
+    color: rgb(7, 87, 87);
 }
 
 .leaderboardTable>thead {
     display: flex;
-    background: var(--deep-sky-blue);
+    background: aqua;
+    border-radius: 1rem;
+    box-shadow: inset 0 0 1rem rgb(100, 190, 204);
 }
 
 
@@ -59,21 +66,18 @@
 }
 
 .leaderboardTable th {
-    background-color: var(--deep-sky-blue);
     color: var(--aquamarine);
 }
 
-.leaderboardTable tr:nth-child(even) {
-    background-color: var(--maize);
-}
+
 
 .leaderboardTable tr {
     width: 100%;
 }
 
 .leaderboardTable tr:hover {
-    background-color: var(--brilliant-rose);
-    color: var(--aquamarine);
+    background-color: rgb(29, 113, 113);
+    color: aqua;
 }
 
 .leaderboardTable tr {
@@ -82,7 +86,7 @@
     flex-grow: 1;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--amethyst);
+    border-bottom: 1px solid rgb(9, 71, 71);
 
 }
 

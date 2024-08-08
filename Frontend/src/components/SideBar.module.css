@@ -1,54 +1,116 @@
-* {
-    font-family: "Jodefin Sans", serif;
-}
-
 .hamburger img {
     width: 1.4rem;
     cursor: pointer;
     animation: none;
 }
 
+
+.hamburger:hover {
+    background: linear-gradient(-20deg, rgb(214, 254, 255), rgb(40, 200, 200));
+    z-index: 1;
+    box-shadow: 0rem 0rem 0.5rem aqua;
+    cursor: pointer;
+}
+
 .sideBar {
     position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
+    bottom: 1rem;
     z-index: 10000000000;
+    max-width: 50%;
+
+}
+.sideBar button{
+    background: transparent ;
+    outline: none !important;
+    border: none;
+}
+
+.hamburger {
+    background: linear-gradient(160deg, rgb(214, 254, 255), rgb(40, 200, 200));
+    position: fixed;
+    bottom: 1rem;
+    right: 3rem;
+    padding: 0.6rem;
+    border-radius: 1rem;
+    z-index: 10;
 }
 
 .sbr {
-    background: #FEE440;
     padding-inline: 1rem;
     border-radius: 0.5rem;
-    border: 0.1rem #000 solid;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    flex-direction: row;
+    background: linear-gradient(10deg, rgb(24, 30, 30), rgb(30, 38, 38));
+    animation: 0.5s ease appear forwards;
+    padding: 0.8rem;
+    box-shadow: 0 0 1rem aqua;
+}
+
+.user {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.user img {
+    animation: none;
 }
 
 .link,
 .logoutButton {
-    width: 15rem;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    padding-block: 0.4rem;
+    justify-content: center;
+    margin-inline: 0.4rem;
     height: 2rem;
     font-size: 1.2rem !important;
     border-radius: 0.4rem;
     padding-inline: 0.3rem;
     overflow: hidden;
+    font-family: "Josefin Sans", serif;
+    transition: 0.3s ease;
+    color: aqua;
 }
 
-.link img,
 .logoutButton svg,
 .link svg {
     width: 1.2rem;
+    margin-inline-start: 1rem;
 }
 
 .link:hover,
 .logoutButton:hover {
-    background: #e5ff00;
+    background: aqua;
+    color: rgb(1, 131, 131);
+    transform: translateY(-0.3rem);
+    box-shadow: 0rem 0rem 0.5rem rgb(0, 146, 146);
+
+
+}
+
+@keyframes appear {
+    0% {
+        bottom: -1rem;
+    }
+
+    100% {
+        bottom: 3rem;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .user span:nth-of-type(1) {
+        display: none;
+    }
+
+    .user span svg {
+        margin: 0;
+
+    }
+
+
+
+
 }
 
 @media screen and (max-width: 576px) {
@@ -56,14 +118,17 @@
     .link,
     .logoutButton {
         font-size: 1.3rem !important;
-        width: 20rem;
-        margin-block: 1rem;
-    }
-
-    .link img,
-    .logoutButton svg,
-    .link svg {
-        width: 1.3rem;
 
     }
+
+    .sideBar {
+        bottom: 3rem;
+
+    }
+
+    .hamburger {
+        bottom: 3rem;
+
+    }
+
 }

@@ -1,44 +1,33 @@
-/* Font import (Add this to your global CSS file or in your HTML head) */
-
-/* Apply global styles or to a specific container */
-:root {
-  --amethyst: #9b5de5ff;
-  --brilliant-rose: #f15bb5ff;
-  --maize: #fee440ff;
-  --deep-sky-blue: #00bbf9ff;
-  --aquamarine: #00f5d4ff;
-  --gradient-top: linear-gradient(0deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-right: linear-gradient(90deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-bottom: linear-gradient(180deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-left: linear-gradient(270deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-top-right: linear-gradient(45deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-bottom-right: linear-gradient(135deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-top-left: linear-gradient(225deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-bottom-left: linear-gradient(315deg, #9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --gradient-radial: radial-gradient(#9b5de5ff, #f15bb5ff, #fee440ff, #00bbf9ff, #00f5d4ff);
-  --font-family: 'Josefin sans', sans-serif;
-}
-
-*, h1, h2, h3 {
-  font-family: "Josefin sans", serif;
-}
-
 .loginContainer {
   width: 100%;
   max-width: 400px;
   margin: auto;
   padding: 20px;
-  background-color: #f9f9f9;
+  background: linear-gradient(30deg, rgb(11, 63, 96), rgb(124, 223, 223));
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   font-family: var(--font-family);
-  border: 0.1rem solid #000;
+  max-width: 20rem;
+  height: 27rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: relative;
+  z-index: 1;
+}
+
+.loginContainer img {
+  position: absolute;
+  z-index: -1;
+  left: -15rem;
 }
 
 .loginTitle {
   text-align: center;
   margin-bottom: 20px;
-  color: var(--amethyst);
+  color: rgb(11, 56, 83);
+  font-family: "Josefin Slab", sans-serif;
+  font-size: 1.5rem;
 }
 
 .loginForm {
@@ -53,14 +42,28 @@
 .formLabel {
   display: block;
   margin-bottom: 5px;
+  color: rgb(110, 220, 220);
+  font-family: "Josefin Slab", serif;
 }
 
 .formInput {
   width: 100%;
   padding: 10px;
-  border: 1px solid var(--maize);
   border-radius: 0.5rem;
   box-sizing: border-box;
+  border: 0.1rem solid rgb(56, 208, 208);
+
+  background: transparent;
+}
+
+.formInput:focus {
+  background-color: transparent;
+  border: 0.1rem solid cyan;
+  outline: none;
+}
+
+.formInput:-internal-autofill-selected {
+  background: transparent !important;
 }
 
 .loginButton {
@@ -69,7 +72,7 @@
   color: white;
   border: none;
   border-radius: 0.5rem;
-
+  background: linear-gradient(45deg, rgb(11, 135, 173), rgb(2, 60, 81));
   border-radius: 1rem;
   cursor: pointer;
   font-size: 16px;
@@ -80,6 +83,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Josefin Slab", sans-serif;
+
+}
+
+.sp1 {
+  color: #75c0c7;
+  padding-right: 0.2rem;
 }
 
 .loginButton:hover {
@@ -87,15 +97,66 @@
 }
 
 .success {
-  color: rgb(52, 145, 9);
+  color: rgb(161, 246, 213);
 }
 
 .error {
-  color: rgb(156, 17, 17);
+  color: rgb(255, 184, 184);
+}
+
+.success,
+.error {
+  font-family: "Josefin Slab", serif;
+}
+
+.robo {
+  max-height: 20rem;
+}
+
+.loginButton:hover {
+  background: linear-gradient(45deg, rgb(2, 60, 81), rgb(11, 135, 173));
+  box-shadow: 0 0 1rem aqua;
+}
+
+.sp2 {
+  color: aqua;
+}
+
+.sp1,
+.sp2 {
+  font-family: "Josefin Slab", sans-serif;
+  font-size: 1rem;
+}
+
+.loginContainer>button {
+  background: transparent !important;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+  .loginContainer img {
+    left: -12rem;
+  }
+
 }
 
 @media screen and (max-width:576px) {
-  .loginContainer{
+  .loginContainer {
     margin-inline: 3rem;
+  }
+
+  .loginContainer img {
+    left: -5rem;
+    height: 10rem;
+  }
+}
+
+@media screen and (max-width:460px) {
+
+  .loginContainer img {
+    top: -7rem;
+    left: 50%;
+    translate: -50%;
   }
 }
