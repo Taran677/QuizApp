@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 import TrivialComponent from "./components/TrivialComponent";
 import UrlGeneratorAPI from "./components/UrlGeneratorAPI";
@@ -20,14 +20,14 @@ import Menu from "./assets/menu.svg";
 import axios from "axios";
 import MyProfile from "./components/MyProfile.jsx";
 import Leaderboard from "./components/Leaderboard.jsx";
-import Robo from "./assets/robo.svg"
-import RoboLogin from "./assets/robologin.svg"
-import Logo from "./assets/logo.svg"
-import Atom from "./assets/Atom.svg"
-import Rocket from "./assets/rocket.svg"
-import RoboQp from "./assets/roboqp.svg"
-import RoboError from "./assets/roboError.svg"
-import RoboLeaderboard from "./assets/roboLeaderboard.svg"
+import Robo from "./assets/robo.svg";
+import RoboLogin from "./assets/robologin.svg";
+import Logo from "./assets/logo.svg";
+import Atom from "./assets/Atom.svg";
+import Rocket from "./assets/rocket.svg";
+import RoboQp from "./assets/roboqp.svg";
+import RoboError from "./assets/roboError.svg";
+import RoboLeaderboard from "./assets/roboLeaderboard.svg";
 
 function App() {
   const [url, setUrl] = useState("");
@@ -35,29 +35,40 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [username, setUsername] = useState(null);
+  const [changeTheme, setChangeTheme] = useState(false);
+  const [themeIndex, setThemeIndex] = useState(1);
+
   const baseUrl = import.meta.env.VITE_REACT_APP_BACK_URL;
-  const frontUrl = import.meta.env.VITE_REACT_APP_FRONT_URL || "https://tiny-manatee-d7052c.netlify.app";
-  console.log(baseUrl, frontUrl)
+  const frontUrl =
+    import.meta.env.VITE_REACT_APP_FRONT_URL ||
+    "https://tiny-manatee-d7052c.netlify.app";
+
+  useEffect(() => {
+    if (changeTheme) {
+      document.body.classList.add("invert");
+    } else {
+      document.body.classList.remove("invert");
+    }
+    return () => {
+      document.body.classList.remove("invert");
+    };
+  }, [changeTheme]);
   useEffect(() => {
     const fetchUsername = async () => {
       try {
         const token = document.cookie
-          .split('; ')
-          .find(row => row.startsWith('authToken='))
-          ?.split('=')[1];
-        console.log('Token:', token);
+          .split("; ")
+          .find((row) => row.startsWith("authToken="))
+          ?.split("=")[1];
+        console.log("Token:", token);
 
-        const response = await axios.get(
-          `${baseUrl}/api/protected-route`,
-          {
-            withCredentials: true,
-            headers: {
-              'Authorization': `Bearer ${token}` 
-            }
-          }
-        );
+        const response = await axios.get(`${baseUrl}/api/protected-route`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-        console.log("API response:", response);
         setUsername(response.data.username);
       } catch (error) {
         console.error("Error fetching username:", error);
@@ -70,10 +81,7 @@ function App() {
 
   const onLogout = async () => {
     try {
-      await axios.post(
-        `${baseUrl}/api/auth/logout`,
-        { withCredentials: true }
-      );
+      await axios.post(`${baseUrl}/api/auth/logout`, { withCredentials: true });
       setUsername(null);
     } catch (error) {
       console.error("Error logging out:", error);
@@ -82,8 +90,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className={`${"App"} ${changeTheme ? "invert" : ""}`}>
         <SideBar
+          themeIndex={themeIndex}
+          setThemeIndex={setThemeIndex}
           username={username}
           setError={setError}
           Profile={Profile}
@@ -91,9 +101,12 @@ function App() {
           onLogout={onLogout}
           baseUrl={baseUrl}
           frontUrl={frontUrl}
+          setChangeTheme={setChangeTheme}
         />
         {loading && <Loading />}
-        {error && <Error error={error} setError={setError} RoboError={RoboError} />}
+        {error && (
+          <Error error={error} setError={setError} RoboError={RoboError} />
+        )}
         <Routes>
           <Route
             path="/"
@@ -168,13 +181,24 @@ function App() {
                 baseUrl={baseUrl}
                 frontUrl={frontUrl}
                 RoboQp={RoboQp}
+                themeIndex={themeIndex}
               />
             }
           />
-          <Route path="/profile" element={<MyProfile baseUrl={baseUrl} frontUrl={frontUrl} />} />
+          <Route
+            path="/profile"
+            element={<MyProfile baseUrl={baseUrl} frontUrl={frontUrl} />}
+          />
           <Route
             path="/leaderboard"
-            element={<Leaderboard setError={setError} baseUrl={baseUrl} frontUrl={frontUrl} RoboLeaderboard={RoboLeaderboard} />}
+            element={
+              <Leaderboard
+                setError={setError}
+                baseUrl={baseUrl}
+                frontUrl={frontUrl}
+                RoboLeaderboard={RoboLeaderboard}
+              />
+            }
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>

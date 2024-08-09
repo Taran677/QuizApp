@@ -20,7 +20,6 @@ export default function Login({
   const [theLogin, setTheLogin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
-  console.log(baseUrl);
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
@@ -28,7 +27,6 @@ export default function Login({
           withCredentials: true,
         });
         setIsAuthenticated(true);
-        // Redirect to /get-started if authenticated
         navigate("/get-started");
       } catch (error) {
         setIsAuthenticated(false);
@@ -38,9 +36,6 @@ export default function Login({
     checkAuthStatus();
   }, [navigate, baseUrl]);
 
-  useEffect(() => {
-    console.log("Success:", success, "Error:", error);
-  }, [success, error]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +48,6 @@ export default function Login({
       const response = await axios.post(endpoint, { username, password });
 
       if (isLogin) {
-        console.log(response.data);
         setTheLogin(true);
         // Fetch protected data
         await fetchData();

@@ -280,19 +280,109 @@ body {
     color: #052b34
 }
 
-.correct,
-.correct:hover {
+.correct1,
+.correct1:hover {
     background: #3ee0a5;
     color: #02613e;
     border: #02613e 0.1rem solid;
+    filter: none;
 }
 
-.incorrect,
-.incorrect:hover {
+.correct2,
+.correct2:hover {
+    background: #3ee0a5;
+    color: #02613e;
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-30deg);
+}
+
+.correct3,
+.correct3:hover {
+    background: #3ee0a5;
+    color: #02613e;
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-60deg);
+}
+
+.correct4,
+.correct4:hover {
+    background: #3ee0a5;
+    color: #02613e;
+    border: #02613e 0.1rem solid;
+    filter: none;
+    filter: hue-rotate(-90deg);
+}
+
+.correct5,
+.correct5:hover {
+    background: #3ee0a5;
+    color: #02613e;
+    border: #02613e 0.1rem solid;
+    filter: none;
+    filter: hue-rotate(-120deg);
+}
+
+.correct6,
+.correct6:hover {
+    background: #3ee0a5;
+    color: #02613e;
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-150deg);
+}
+
+.incorrect1,
+.incorrect1:hover {
     background: rgb(221, 97, 97);
     color: rgb(158, 36, 36);
     border: #02613e 0.1rem solid;
+    filter: hue-rotate(-0deg);
 }
+
+.incorrect2,
+.incorrect2:hover {
+    background: rgb(221, 97, 97);
+    color: rgb(158, 36, 36);
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-30deg);
+}
+
+
+.incorrect3,
+.incorrect3:hover {
+    background: rgb(221, 97, 97);
+    color: rgb(158, 36, 36);
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-60deg);
+}
+
+
+.incorrect4,
+.incorrect4:hover {
+    background: rgb(221, 97, 97);
+    color: rgb(158, 36, 36);
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-90deg);
+}
+
+
+
+.incorrect5,
+.incorrect5:hover {
+    background: rgb(221, 97, 97);
+    color: rgb(158, 36, 36);
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-120deg);
+}
+
+
+.incorrect6,
+.incorrect6:hover {
+    background: rgb(221, 97, 97);
+    color: rgb(158, 36, 36);
+    border: #02613e 0.1rem solid;
+    filter: hue-rotate(-150deg);
+}
+
 
 @media screen and (max-width:976px) {
     .roboqp {

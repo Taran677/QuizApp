@@ -18,6 +18,7 @@ export default function QuizPage({
   username,
   baseUrl,
   RoboQp,
+  themeIndex,
 }) {
   const [begin, setBegin] = useState(false);
   const [index, setIndex] = useState(0);
@@ -178,7 +179,6 @@ export default function QuizPage({
 
       postData();
     }
-    console.log(answeredQuestions);
   }, [action, answeredQuestions]);
 
   const countUnansweredQuestions = () => {
@@ -227,15 +227,16 @@ export default function QuizPage({
                 className={`${css.option} ${
                   viewAnswers[index] &&
                   (option === shuffledQuestions[index].correct_answer
-                    ? css.correct
+                    ? `${css[`correct${themeIndex}`]}`
                     : option === selectedOptions[index]
-                    ? css.incorrect
+                    ? `${css[`incorrect${themeIndex}`]}`
                     : "")
                 } ${answeredQuestions[index] ? css.answered : ""}`}
               >
                 {he.decode(option)}
               </div>
             ))}
+
             <div className={css.empty}></div>
             {viewAnswers[index] && (
               <div className={css.answer}>

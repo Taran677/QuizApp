@@ -17,7 +17,7 @@
   const collectionName = process.env.COLLECTION_NAME;
   app.use(express.json());
   const corsOptions = {
-    origin: 'https://tiny-manatee-d7052c.netlify.app', // Your frontend URL
+    origin: 'https://tiny-manatee-d7052c.netlify.app', 
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,

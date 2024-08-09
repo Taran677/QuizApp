@@ -9,10 +9,6 @@ export default function Button({ play, setPlay, url }) {
     }
   }, [play, url]);
 
-  useEffect(() => {
-    console.log("Button URL:", url);
-  }, [url]);
-
   return (
     <div className={css.button}>
       <Link

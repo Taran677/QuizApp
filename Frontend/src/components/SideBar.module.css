@@ -88,6 +88,10 @@
 
 }
 
+.link{
+    cursor: pointer;
+}
+
 @keyframes appear {
     0% {
         bottom: -1rem;
@@ -102,7 +106,9 @@
     .user span:nth-of-type(1) {
         display: none;
     }
-
+.splSp{
+    display: flex !important;
+}
     .user span svg {
         margin: 0;
 

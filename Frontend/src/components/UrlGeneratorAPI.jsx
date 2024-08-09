@@ -62,13 +62,11 @@ export default function UrlGeneratorAPI({
         setNumberOfQues(
           data.category_question_count[`total_${difficulty}_question_count`]
         );
-        console.log(amount);
         setLoading(false);
 
         setUrl(
           `https://opentdb.com/api.php?amount=${amount}&category=${catId}&difficulty=${difficulty}`
         );
-        console.log(url)
       })
       .catch((err) => {
         console.log(err);
@@ -98,7 +96,6 @@ export default function UrlGeneratorAPI({
   }, []);
   useEffect(() => {
     const categories = array;
-    console.log(difficulty);
 
     if (category && categories && difficulty) {
       getCatId(selectedCat, categories);

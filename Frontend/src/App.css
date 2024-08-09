@@ -15,6 +15,25 @@ a {
 *{
     scroll-behavior: smooth !important;
 }
+.invert1{
+    filter:hue-rotate(0deg);
+}
+.invert2{
+    filter:hue-rotate(30deg);
+}
+.invert3{
+    filter:hue-rotate(60deg);
+}
+.invert4{
+    filter:hue-rotate(90deg);
+}
+.invert5{
+    filter:hue-rotate(120deg);
+}
+.invert6{
+    filter:hue-rotate(150deg);
+}
+
 
 @media screen and (max-width: 576px) {
     h1{
